@@ -1,37 +1,14 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
-    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+{% extends 'base.html' %}
 
-    <script src="{% static 'js/jquery.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/wow.min.js' %}"></script>
-    <style>
-        td{
-            height:120px;
-            width:150px;
-            text-align:center;
-            border:3px solid black;
-            font-size:80px;
-            font-weight:800;
-            text-shadow:3px 2px 5px #ff0000;
-        }
+{% block title %}
+Location API
+{% endblock %}
 
 
-    </style>
-</head>
-<body style="background-color:black;">
+{% block container %}
 <div class="container">
-    <div class="jumbotron" style="background-color:white;color:Black;margin-top:5px;height:500px;">
-        <h2 class="display-3" style="text-align:center; font-weight:800">Welcome to Location Address Found
+<div class="jumbotron" style="background-color:white;color:Black;margin-top:5px;height:500px;">
+        <h2 class="display-3" style="text-align:center; fo\nt-weight:800">Welcome to Location Address Found
             Application </h2>
         <hr class="my-2" style="color:black;">
 
@@ -48,16 +25,13 @@
             </form>
         </div>
         <div style="margin:10px">
+            {% if address %}
             <p>Your Selected Location Is : <span style="font-weight:800; font-style:italic">{{address}}</span></p>
             <p>Your Street Address & Name: <span style="font-weight:800; font-style:italic">{{street}}</span></p>
-            <p>Latitude and Longitude: <span style="font-weight:800; font-style:italic">({{latitude}}, {{longitude}})</span></p>
+            <p>Latitude and Longitude: <span style="font-weight:800; font-style:italic">({{latitude}}{% if latitude %}, {% else%} {% endif %}{{longitude}})</span>
+            </p>
+            {% endif %}
         </div>
     </div>
 </div>
-
-
-<!--<script src="{% static 'js/test.js' %}"></script>-->
-<!--<script src="{% static 'js/game.js' %}"></script>-->
-<!--<script src="{% static 'js/Jquery.js' %}"></script>-->
-</body>
-</html>
+{% endblock %}
